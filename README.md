@@ -14,7 +14,6 @@
 ## Folder Structure
 ```
 .
-├── images
 ├── main.py
 ├── Preprocesor.py
 ├── README.md
@@ -37,9 +36,6 @@
 
 - `train.csv` / `test.csv`
     - These are the labeled training dataset used to train the model and test dataset used for final predictions.
-
-- `images/`
-	- Stores images produced during EDA, model results used in the report.
 
 -  `requirements.txt`
     - Contains the list of necessary python libraries to be installed to run the code
@@ -73,6 +69,7 @@ Run the main program and enter the model you want to use
 ```bash
   py main.py
 ```
+
 
 
 
