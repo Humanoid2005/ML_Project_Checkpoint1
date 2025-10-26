@@ -6,13 +6,12 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.linear_model import BayesianRidge, LinearRegression, Ridge,Lasso
+from sklearn.linear_model import BayesianRidge, LinearRegression, Ridge,Lasso,ElasticNet
 from sklearn.neighbors import KNeighborsRegressor
 import lightgbm as lgbm
 import xgboost as xgb
 from catboost import CatBoostRegressor
 
-from Preprocesor import Preprocessor
 
 preprocessor = Preprocessor()
 preprocessor.preprocess()
@@ -25,13 +24,35 @@ test_ids = preprocessor.test_ids
 
 model_name = input("Enter the model you want to use: ")
 
+if(model_name.lower() == 'linearregression'):
+    model = LinearRegression()
+    
+elif(model_name.lower() == 'ridge'):
+    model = Ridge(alpha=2.465)
 
-if(model_name.lower() == 'bayesian'):
+elif(model_name.lower() == 'lasso'):
+    model = Lasso(alpha=0.008)
+    
+elif(model_name.lower() == 'elasticnet'):
+    model = ElasticNet(alpha=0.017,l1_ratio=0.95)
+
+elif(model_name.lower() == 'bayesian'):
     model = BayesianRidge(max_iter=5000)
 
 elif(model_name.lower() == 'knn'):
     model = KNeighborsRegressor(
-        n_neighbors=100,weights='distance'
+        n_neighbors=100
+    )
+    
+elif(model_name.lower() == 'randomforest'):
+    model = RandomForestRegressor(
+        n_estimators=500,    
+        max_depth=8,        
+        min_samples_split=5,  
+        min_samples_leaf=1,  
+        max_features=0.8,  
+        n_jobs=-1,        
+        random_state=42
     )
 
 elif(model_name.lower() == 'xgboost'):
@@ -72,19 +93,6 @@ elif(model_name.lower() == 'lightgbm'):
         reg_alpha=0.1,
         reg_lambda=0.5              
     )
-
-# model = RandomForestRegressor(
-#     n_estimators=500,      
-#     max_depth=8,           
-#     min_samples_split=5,    
-#     min_samples_leaf=1,    
-#     max_features=0.8,    
-#     n_jobs=-1,            
-#     random_state=42
-# )
-
-# model = LinearRegression()
-# model = Lasso(alpha=5.0)
 
 X_train,x_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)
 
