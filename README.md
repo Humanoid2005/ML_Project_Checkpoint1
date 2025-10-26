@@ -21,7 +21,7 @@
 ├── requirements.txt
 ├── test.csv
 └── train.csv
-└── project_report.pdf
+└── ML_Project_Checkpoint1.pdf
 ```
 
 ## What each file does
@@ -44,7 +44,7 @@
 -  `requirements.txt`
     - Contains the list of necessary python libraries to be installed to run the code
 
-- `project_report.pdf`
+- `ML_Project_Checkpoint1.pdf`
     - The project report contains all information regarding the problem statement,dataset, preprocessing steps, various models experiments and best predictions.
 
 
@@ -73,5 +73,6 @@ Run the main program and enter the model you want to use
 ```bash
   py main.py
 ```
+
 
 
